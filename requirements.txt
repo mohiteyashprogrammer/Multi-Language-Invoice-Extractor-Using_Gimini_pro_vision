@@ -3,4 +3,6 @@ google-generativeai
 python-dotenv
 langchain
 PyPDF2
+
+-e .
 #./.venv/Scripts/activate
