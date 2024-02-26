@@ -5,6 +5,9 @@ from src.exception import CustomException
 from src.logger import logging
 import google.generativeai as genai
 
+# Load the environment variables from the .env file
+dotenv.load_dotenv()
+
 #configure google api
 genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
 
