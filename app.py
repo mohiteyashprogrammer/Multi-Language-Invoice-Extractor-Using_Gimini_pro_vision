@@ -7,17 +7,17 @@ from PIL import Image
 from src.exception import CustomException
 from src.logger import logging
 from src.multi_lang_invoice_extractor.gemini_response import get_gemini_response
-from src.multi_lang_invoice_extractor.input_img import get_input_img
+from src.multi_lang_invoice_extractor.input_img import input_image_setup
 from src.utils import set_background
 from prompt_templates.prompt import PROMPT
 
+set_background("C:\\Users\\yash mohite\\OneDrive\\Desktop\\Multi-Language-Invoice-Extractor-Using_Gimini_pro_vision\\239e40f4bca87c238663e7cf6f9861efbc34db7a.jpg")
 ##initialize our streamlit app
 def main():
 
     logging.info("Starting streamlit....")
     try:
-        st.set_page_config(page_title="Gemini Invoice Extractor")
-
+        #st.set_page_config(page_title="Gemini Invoice Extractor")
         st.header("Mult Language Invoice Extractor Version")
 
         input = st.text_input("Input Prompt: ",key="input")
@@ -42,7 +42,7 @@ def main():
         ## If ask button is clicked
 
         if submit:
-            image_data = get_input_img(uploaded_file)
+            image_data = input_image_setup(uploaded_file)
             response = get_gemini_response(input_prompt,image_data,input)
             st.subheader("The Response is")
             st.write(response)
