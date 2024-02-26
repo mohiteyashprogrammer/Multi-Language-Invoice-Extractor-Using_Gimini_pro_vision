@@ -32,7 +32,7 @@ def get_gemini_response(input,image,prompt):
         # Create the generative model instance
         model = genai.GenerativeModel("gemini-pro-vision")
         response = model.generate_content([input,image[0],prompt])
-        return response
+        return response.text
 
     except Exception as e:
         logging.info("Error Occured while getting gemini response")
