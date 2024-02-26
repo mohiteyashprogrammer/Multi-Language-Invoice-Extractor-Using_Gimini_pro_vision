@@ -8,7 +8,7 @@ from src.logger import logging
 from src.exception import CustomException
 
 
-def input_image_setup(upload_image):
+def input_image_setup(uploaded_file):
     """
     Processes an uploaded image to prepare it for use with the Gemini model.
 
@@ -26,15 +26,15 @@ def input_image_setup(upload_image):
     logging.info("Processing uploaded image...")
     try:
         # Check if a file has been uploaded
-        if upload_image is not None:
+        if uploaded_file is not None:
 
             #Read the file has been uploaded
-            bytes_data = upload_image.getvalues()
+            bytes_data = uploaded_file.getvalue()
 
             # Prepare the image information
             image_paths = [
                 {
-                    "mime_type": upload_image.type, #Get the mime type of the uploaded file
+                    "mime_type": uploaded_file.type, #Get the mime type of the uploaded file
                     "data": bytes_data, #Get the data of the uploaded file
                 }
             ]
